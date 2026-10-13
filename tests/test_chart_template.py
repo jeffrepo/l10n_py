@@ -9,7 +9,7 @@ class TestParaguayChartTemplate(TransactionCase):
     def setUpClass(cls):
         super().setUpClass()
         cls.company = cls.env['res.company'].create({
-            'name': 'Ticnova Paraguay - pruebas',
+            'name': 'Empresa Paraguay - pruebas',
             'country_id': cls.env.ref('base.py').id,
         })
         cls.env = cls.env(context=dict(cls.env.context, allowed_company_ids=[cls.company.id]))
@@ -139,12 +139,12 @@ class TestParaguayChartTemplate(TransactionCase):
     def test_reload_preserves_records_and_customized_journals(self):
         models = ('account.account', 'account.tax', 'account.tax.group', 'account.journal', 'account.group')
         before = {model: set(self._company_records(model).ids) for model in models}
-        self.chart.ref('bank').name = 'Banco elegido por Ticnova'
+        self.chart.ref('bank').name = 'Banco elegido por la empresa'
         self.chart.try_loading('py', self.company, install_demo=False)
         for model in models:
             with self.subTest(model=model):
                 self.assertEqual(set(self._company_records(model).ids), before[model])
-        self.assertEqual(self.chart.ref('bank').name, 'Banco elegido por Ticnova')
+        self.assertEqual(self.chart.ref('bank').name, 'Banco elegido por la empresa')
 
     def test_company_isolation(self):
         guatemala = self.env['res.company'].create({

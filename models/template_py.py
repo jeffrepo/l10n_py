@@ -8,7 +8,7 @@ class AccountChartTemplate(models.AbstractModel):
     @template('py')
     def _get_py_template_data(self):
         return {
-            'name': 'Ticnova - Contabilidad base',
+            'name': 'Contabilidad base',
             'code_digits': '6',
             'property_account_receivable_id': 'py_receivable',
             'property_account_payable_id': 'py_payable',

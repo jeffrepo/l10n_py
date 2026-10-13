@@ -1,7 +1,7 @@
 {
-    'name': 'Paraguay - Contabilidad base Ticnova',
+    'name': 'Paraguay - Contabilidad base',
     'summary': 'Plan de cuentas, diarios e IVA para empresas de Paraguay',
-    'version': '19.0.1.0.0',
+    'version': '19.0.1.0.1',
     'author': 'Silva technologies',
     'license': 'LGPL-3',
     'category': 'Accounting/Localizations/Account Charts',

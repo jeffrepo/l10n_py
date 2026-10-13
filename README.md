@@ -1,12 +1,11 @@
-# l10n_py — Paraguay - Contabilidad base Ticnova (Odoo 19)
+# l10n_py — Paraguay - Contabilidad base (Odoo 19)
 
 Localización inicial para una **empresa nueva de Paraguay**. Utiliza las
 plantillas nativas de `account.chart.template`, como `l10n_gt`, con código
-`py`. Depende únicamente de `account`, por lo que no requiere Enterprise,
-`account_gt`, `blautech` ni la localización de Guatemala.
+`py`. Depende únicamente de `account` y puede utilizarse sin Enterprise.
 
 Existe una localización comunitaria de OCA con el mismo nombre técnico
-`l10n_py`. Este desarrollo es la versión propia de Ticnova: **no colocar ambas
+`l10n_py`. Esta es una implementación independiente: **no colocar ambas
 versiones en las rutas de addons del mismo servidor** ni sustituir una por la
 otra en una base ya configurada sin planificar una migración.
 
@@ -38,7 +37,7 @@ Ejemplos con una unidad y sin descuentos:
 | IVA 5% | ₲105.000 | ₲100.000 | ₲5.000 | ₲105.000 |
 | Exento | ₲100.000 | ₲100.000 | ₲0 | ₲100.000 |
 
-Si las listas de precios de Ticnova son netas, cambiar la opción «Incluido en
+Si las listas de precios de la empresa son netas, cambiar la opción «Incluido en
 el precio» de los impuestos antes de cargar productos y comenzar a facturar.
 El 5% y la exención deben asignarse a los productos u operaciones que
 correspondan; la plantilla no decide su tratamiento fiscal automáticamente.
@@ -51,12 +50,12 @@ correspondan; la plantilla no decide su tratamiento fiscal automáticamente.
    repositorio. Incluir `/ruta/addons` en `addons_path`, reiniciar el servicio
    y actualizar la lista de aplicaciones.
 2. Crear una empresa independiente con país **Paraguay**. No crearla como
-   sucursal de la empresa guatemalteca: las sucursales heredan el plan y la
+   sucursal de otra empresa: las sucursales heredan el plan y la
    moneda de su empresa raíz.
-3. Seleccionar la empresa paraguaya e instalar **Paraguay - Contabilidad base
-   Ticnova**. Si no se carga automáticamente, en Contabilidad → Configuración
-   → Ajustes → Localización fiscal, seleccionar **Paraguay - Ticnova -
-   Contabilidad base** y guardar (el nombre del país depende del idioma).
+3. Seleccionar la empresa paraguaya e instalar **Paraguay - Contabilidad base**.
+   Si no se carga automáticamente, en Contabilidad → Configuración → Ajustes
+   → Localización fiscal, seleccionar **Paraguay - Contabilidad base** y guardar
+   (el nombre del país depende del idioma).
 4. Verificar PYG, IVA predeterminado, cuentas y diarios. Completar datos de
    empresa/RUC, cuentas bancarias reales y métodos de pago, incluidas sus
    cuentas de cobros y pagos pendientes según el flujo de conciliación.
@@ -76,7 +75,7 @@ global de PYG ni introduce tipos de cambio inventados.
 
 ## Alcance de esta primera versión
 
-Es una base contable propia de Ticnova, no un plan oficial aprobado ni una
+Es una base contable para Paraguay, no un plan oficial aprobado ni una
 localización fiscal completa. No incluye SIFEN/e-Kuatia, timbrados, numeración
 fiscal paraguaya, validación del dígito verificador del RUC, declaraciones DNIT,
 libros fiscales, retenciones, IRE, ISC ni liquidación automática del IVA. La
@@ -85,7 +84,7 @@ numeración de los diarios es la interna de Odoo y no acredita validez fiscal.
 Incluye la cuenta de inventario para registros contables; la valoración
 automática de existencias requiere configurar Inventario y sus categorías.
 Los diarios de caja y banco utilizan los mecanismos estándar de pagos y
-conciliación de Odoo, que deben configurarse para la operativa de Ticnova.
+conciliación de Odoo, que deben configurarse para la operativa de cada empresa.
 
 ## Pruebas
 
@@ -96,7 +95,7 @@ base de pruebas de Odoo 19 con PostgreSQL antes de usarlo en producción.
 En una base desechable con Odoo 19 y PostgreSQL:
 
 ```sh
-odoo-bin -c /ruta/odoo.conf -d ticnova_py_test \
+odoo-bin -c /ruta/odoo.conf -d paraguay_test \
   -i l10n_py --without-demo=all \
   --test-enable --test-tags /l10n_py --stop-after-init
 ```
